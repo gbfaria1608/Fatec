@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fatec | ADS</title>
+<link rel="icon" href="icone.ico" type="image/x-icon">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@300;400;600;700;800&display=swap');
+
+  :root {
+    --red: #d93025;
+    --black: #000000;
+    --white: #fff;
+    --gray-light: #f0f0f0;
+    --gray-medium: #e5e5e5;
+    --gray-dark: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --red-hover: #a1261c;
+    --red-light: #ffeaea;
+    --code-font: 'Roboto Mono', monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--code-font); /* Fonte principal do corpo como código */
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  a:hover,
+  a:focus {
+    color: var(--red-hover);
+    outline: none;
+  }
+
+  /* Topo da página com logos */
+  .top-header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #logos_titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Mais espaçamento entre as imagens */
+  }
+
+  #logos_titulo img {
+    height: auto;
+    max-height: 60px; /* Logos um pouco menores */
+  }
+
+  /* Header principal (barra de navegação) */
+  header {
+    background: var(--black); /* Barra de navegação preta */
+    box-shadow: 0 4px 12px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinha os itens à direita para remover o "Fatec" do logo */
+    height: 70px;
+  }
+
+  /* Esconde o logo "Fatec" na navegação principal em telas maiores */
+  nav .logo {
+    display: none;
+  }
+
+  /* Esconde o botão de menu sanduíche em telas maiores */
+  .menu-toggle {
+    display: none; /* Oculta por padrão em desktop */
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: inline-block;
+  }
+
+  nav ul li a,
+  .dropbtn {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: block;
+    white-space: nowrap;
+    color: var(--white); /* Cor dos botões na barra de navegação */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--code-font); /* Fonte dos botões de navegação */
+  }
+
+  nav ul li a:hover,
+  nav ul li a:focus,
+  .dropbtn:hover,
+  .dropbtn:focus {
+    background-color: var(--red); /* Fundo vermelho no hover/focus */
+    color: var(--white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+
+  /* Dropdown Button */
+  .dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--black); /* Fundo preto para o dropdown */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: var(--white); /* Texto branco para os links do dropdown */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-radius: 8px;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: var(--red); /* Fundo vermelho no hover do dropdown */
+    color: var(--white);
+  }
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+  .hero {
+    background: linear-gradient(135deg, rgba(217,48,37,0.9), rgba(0,0,0,0.85)), url('frente.jpg') no-repeat center/cover;
+    color: var(--white);
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: inset 0 -8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-content {
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    font-family: 'Segoe UI', sans-serif; /* Título principal com Segoe UI */
+  }
+
+  .hero p {
+    font-size: 1.35rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .btn {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--red);
+    font-weight: 700;
+    padding: 16px 35px;
+    border-radius: 35px;
+    font-size: 1.15rem;
+    box-shadow: 0 10px 20px rgba(217,48,37,0.35);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    border: none;
+    font-family: 'Segoe UI', sans-serif; /* Botão com Segoe UI */
+  }
+
+  .btn:hover,
+  .btn:focus {
+    background-color: var(--red-hover);
+    color: var(--white);
+    box-shadow: 0 15px 25px rgba(161,38,28,0.8);
+    transform: translateY(-3px);
+    outline: none;
+  }
+
+  main {
+    background-color: var(--white);
+    border-radius: 20px;
+    margin: 50px auto 100px;
+    max-width: 1080px;
+    box-shadow: 0 15px 30px var(--shadow-color);
+    padding: 50px 40px;
+  }
+
+  h2 {
+    color: var(--red);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 10px;
+    font-family: 'Segoe UI', sans-serif; /* Títulos com Segoe UI */
+  }
+
+  h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--black);
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+
+  h2[id="sobre"] {
+    color: var(--white);
+  }
+  h2[id="sobre"]::after {
+    background-color: var(--white);
+  }
+
+  h3 {
+    color: var(--red);
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', sans-serif; /* Subtítulos com Segoe UI */
+  }
+
+  p {
+    line-height: 1.7;
+    font-size: 1.08rem;
+  }
+
+  #curso p {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.15rem;
+  }
+
+  .about-course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+  }
+
+  .about-course-item {
+      background-color: var(--gray-medium);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .about-course-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  }
+
+  .about-course-item h3 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      color: var(--black);
+      font-family: 'Segoe UI', sans-serif; /* Títulos de item com Segoe UI */
+  }
+
+  .about-course-item ul {
+      list-style-type: disc;
+      padding-left: 25px;
+      margin-top: 15px;
+  }
+
+  .about-course-item li {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+  }
+
+
+  .accordion-section {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  details {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    padding: 18px 25px;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--gray-medium);
+  }
+
+  details[open] {
+    box-shadow: 0 10px 25px rgba(217,48,37,0.3);
+    background-color: var(--red-light);
+    cursor: auto;
+    border-color: var(--red);
+  }
+
+  summary {
+    font-weight: 700;
+    font-size: 1.25rem;
+    list-style: none;
+    outline: none;
+    user-select: none;
+    padding-right: 30px;
+    font-family: 'Segoe UI', sans-serif; /* Summary com Segoe UI */
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary:after {
+    content: "➕";
+    float: right;
+    transition: transform 0.3s ease;
+    font-weight: 700;
+    color: var(--red);
+    font-size: 1.2rem;
+  }
+
+  details[open] summary:after {
+    content: "➖";
+    transform: rotate(180deg);
+  }
+
+  .projects {
+    margin-top: 15px;
+    padding-left: 25px;
+    list-style-type: disc;
+  }
+
+  .projects li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  thead th {
+    background-color: var(--red);
+    color: var(--white);
+    font-weight: 700;
+    padding: 16px 15px;
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif; /* Cabeçalho da tabela com Segoe UI */
+  }
+
+  tbody td, tbody th {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+    padding: 14px 15px;
+    font-size: 0.98rem;
+  }
+
+  tbody tr:last-child td, tbody tr:last-child th {
+    border-bottom: none;
+  }
+
+  tbody tr:hover td, tbody tr:hover th {
+    background-color: var(--red-light);
+  }
+
+  #grade .schedule {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--gray-dark);
+  }
+
+  .btn-link {
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 30px;
+    padding: 14px 30px;
+    display: inline-block;
+    font-weight: 700;
+    box-shadow: 0 8px 15px rgba(217,48,37,0.4);
+    margin-top: 15px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    font-family: 'Segoe UI', sans-serif; /* Botão de link com Segoe UI */
+  }
+
+  .btn-link:hover,
+  .btn-link:focus {
+    background-color: var(--red-hover);
+    box-shadow: 0 12px 20px rgba(161,38,28,0.7);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 8px solid var(--red);
+  }
+
+  footer .social-links a {
+    color: var(--white);
+    margin: 0 15px;
+    font-size: 1.4rem;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: #ffb8b3;
+    transform: translateY(-3px);
+    outline: none;
+  }
+  footer .social-links img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+  }
+
+  footer .address {
+    margin-top: 15px;
+    font-style: normal;
+    line-height: 1.8;
+  }
+
+  /* Responsive Improvements */
+  @media (max-width: 992px) {
+    .container {
+      padding: 0 15px;
+    }
+    nav ul {
+      gap: 15px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    main {
+      margin: 40px 20px 80px;
+      padding: 40px 30px;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.4rem;
+    }
+    .accordion-section {
+      max-width: 700px;
+    }
+    .about-course-grid {
+        grid-template-columns: 1fr;
+    }
+    #logos_titulo {
+        gap: 30px; /* Reduz o espaçamento entre as logos em telas menores */
+    }
+    #logos_titulo img {
+        max-height: 50px; /* Reduz o tamanho das logos em telas menores */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .top-header {
+      padding: 10px 0;
+    }
+    #logos_titulo {
+      flex-direction: column; /* Empilha as logos verticalmente em telas muito pequenas */
+      gap: 10px;
+    }
+    #logos_titulo img {
+        max-height: 40px; /* Reduz ainda mais o tamanho das logos */
+    }
+
+    nav {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      height: auto;
+      padding: 10px 0;
+    }
+
+    /* Mostra o logo "Fatec" na navegação em telas menores */
+    nav .logo {
+      display: block;
+      order: 1; /* Garante que ele fique no início */
+      color: var(--white); /* Cor branca para o logo no menu mobile */
+      font-family: 'Segoe UI', sans-serif; /* Mantém a fonte Segoe UI para o logo */
+      font-size: 1.8rem; /* Volta o tamanho do logo no mobile */
+    }
+
+    /* Mostra o botão de menu sanduíche em telas menores */
+    .menu-toggle {
+      display: block;
+      order: 2;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: var(--white); /* Cor branca para o ícone do menu sanduíche */
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 15px;
+      background: var(--black); /* Fundo preto para o menu mobile */
+      border-radius: 8px;
+      box-shadow: 0 6px 18px var(--shadow-color);
+      order: 3;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1); /* Borda mais suave */
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links li a,
+    .nav-links .dropbtn {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      color: var(--white); /* Texto branco no menu mobile */
+    }
+
+    .dropdown-content {
+      position: static;
+      box-shadow: none;
+      margin-top: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0;
+      background-color: var(--black); /* Fundo preto para o dropdown mobile */
+    }
+
+    .dropdown-content a {
+        padding-left: 35px;
+        font-size: 1rem;
+        color: var(--white); /* Texto branco para links do dropdown mobile */
+    }
+
+    .dropdown-content a:hover {
+        background-color: var(--red-hover); /* Hover vermelho para links do dropdown mobile */
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .hero {
+      min-height: 350px;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+    .btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+    main {
+      margin: 30px 15px 60px;
+      padding: 30px 20px;
+    }
+    h2 {
+      font-size: 1.8rem;
+    }
+    table {
+      font-size: 0.9rem;
+      max-width: 100%;
+    }
+    thead th, tbody td, tbody th {
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="top-header">
+  <div id="logos_titulo">
+    <div class="flex_center">
+      <a href="http://www.cps.sp.gov.br/" target="_blank" rel="noopener">
+        <img src="cps.png" alt="Centro Paula Souza">
+      </a>
+    </div>
+    <div id="fatec">
+      <a href="http://fatecaracatuba.edu.br/" rel="noopener">
+        <img class="logo-fatec-top" src="fatec.png" alt="Fatec Araçatuba">
+      </a>
+    </div>
+    <div>
+      <a href="https://www.saopaulo.sp.gov.br/" target="_blank" rel="noopener">
+        <img class="logo-gov-sp" src="govsp.jpg" alt="Governo do Estado de São Paulo">
+      </a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <nav aria-label="Main navigation">
+      <div class="logo" tabindex="0">Fatec</div>
+      <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="#sobre-curso">O Curso</a></li>
+        <li><a href="#materias">Matérias Destaque</a></li>
+        <li><a href="#grade">Grade Curricular</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li class="dropdown">
+          <button class="dropbtn" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown(this)">Downloads ▾</button>
+        <div class="dropdown-content" role="menu">
+          <a href="matriz.pdf" download>Matriz Curricular (PDF)</a>
+          <a href="horario.pdf" download>Horário de Aulas (PDF)</a>
+        </div>
+        </li>
+        <li class="dropdown">
+          <button class="dropbtn" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown(this)">Siga ▾</button>
+        <div class="dropdown-content" role="menu">
+          <a href="https://siga.cps.sp.gov.br/sigaaluno/applogin.aspx" target="_blank" rel="noopener">Alunos</a>
+          <a href="https://siga.cps.sp.gov.br/fatec/login.aspx" target="_blank" rel="noopener">Professores</a>
+        </div>
+        </li>
+    </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio" role="banner" aria-label="Imagem de destaque com texto sobre o vestibular aberto">
+  <div class="hero-content">
+    <h1>Transforme seu futuro com a Fatec Araçatuba!</h1>
+    <p><strong>Atenção!</strong> Estamos com Inscrições Abertas para o nosso <strong>VESTIBULAR</strong>.</p>
+    <p>Venha se preparar para uma carreira de sucesso na área de tecnologia!</p>
+    <a href="https://vestibular.fatec.sp.gov.br/home/" class="btn" role="button" tabindex="0">Inscreva-se agora | Apenas até 06/06</a>
+  </div>
+</section>
+
+<main>
+  <section id="sobre-curso" aria-labelledby="sobre-curso-title">
+  <h2 id="sobre-curso-title">Sobre o Curso de Análise e Desenvolvimento de Sistemas</h2>
+
+  <div class="about-course-grid">
+    <div class="about-course-item">
+        <h3>Visão Geral do Curso</h3>
+        <p>O curso de ADS da Fatec Araçatuba oferece uma formação completa com <strong>2880 horas/aula</strong> (equivalente a 2400 horas de atividades didáticas). Totalizando <strong>2400 horas</strong> de pura imersão no universo da tecnologia!</p>
+        <p>O Tecnólogo em Análise e Desenvolvimento de Sistemas é um profissional versátil que <strong>analisa, projeta, desenvolve, testa e mantém sistemas de informação</strong>. Você estará apto a trabalhar com as mais modernas ferramentas e metodologias, criando soluções computacionais inovadoras.</p>
+    </div>
+
+    <div class="about-course-item">
+        <h3>O Profissional Formado: Pronto para o Mercado!</h3>
+        <p>A área de TI está em constante crescimento, e nossos alunos frequentemente encontram excelentes oportunidades de trabalho <strong>antes mesmo de se formarem</strong>!</p>
+        <p>Desenvolvemos em você:</p>
+        <ul>
+          <li><strong>Raciocínio Lógico:</strong> Para resolver problemas de forma eficiente.</li>
+          <li><strong>Programação:</strong> Dominando diversas linguagens e metodologias.</li>
+          <li><strong>Qualidade e Segurança:</strong> Garantindo que os sistemas sejam robustos, seguros e fáceis de usar.</li>
+        </ul>
+    </div>
+
+    <div class="about-course-item">
+        <h3>Onde Você Pode Atuar?</h3>
+        <p>As portas do mercado de trabalho estão abertas para o tecnólogo em ADS em diversos setores:</p>
+        <ul>
+          <li><strong>Empresas de Tecnologia:</strong> Consultoria, desenvolvimento de software e sistemas.</li>
+          <li><strong>Setores da Economia:</strong> Indústria, comércio, serviços, instituições financeiras, órgãos públicos.</li>
+          <li><strong>Empreendedorismo:</strong> Crie seu próprio negócio e inove no mercado de informática!</li>
+        </ul>
+        <p>Você poderá, entre outras atividades:</p>
+        <ul>
+          <li>Projetar e implementar sistemas que atendam às necessidades das empresas.</li>
+          <li>Coordenar a infraestrutura de TI, definindo políticas e diretrizes.</li>
+          <li>Realizar consultoria em sistemas de informação, selecionando as melhores soluções de software e hardware.</li>
+          <li>Atuar em centros de pesquisa e desenvolvimento.</li>
+        </ul>
+    </div>
+  </div>
+</section>
+
+  <section aria-labelledby="materias-title" class="accordion-section" id="materias">
+  <h2 id="materias-title">Resumo das Matérias em Destaque</h2>
+
+  <details>
+    <summary tabindex="0">Cálculo</summary>
+    <p>Adquira os fundamentos matemáticos necessários para entender e aplicar conceitos complexos em áreas como inteligência artificial, gráficos computacionais e otimização de algoritmos.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Resolução de problemas de otimização para alocação de recursos em sistemas.</li>
+      <li>Análise de funções e curvas para modelagem de dados.</li>
+    </ul>
+    <center><a href="https://youtu.be/jQI0bsCtdws?si=oLAI9c5FGiIXLAIjs" class="btn-link download-btn">Saiba mais</a></center>
+  </details>
+
+  <details>
+  <summary tabindex="0">Sistemas de Informação</summary>
+  <p>Explore como sistemas informatizados são projetados, implementados e utilizados para apoiar processos organizacionais, tomada de decisão e vantagem competitiva em ambientes corporativos.</p>
+  <p>Projetos:</p>
+  <ul class="projects">
+    <li>Modelagem de sistemas para gestão empresarial com base em requisitos reais.</li>
+    <li>Análise do fluxo de informação e integração entre diferentes setores de uma organização.</li>
+  </ul>
+  </details>
+
+
+  <details>
+    <summary tabindex="0">Comunicação e Expressão</summary>
+    <p>Desenvolva suas habilidades de comunicação escrita e oral, essenciais para a apresentação de projetos e interação no ambiente profissional de TI.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Elaboração de relatórios técnicos e documentação de projetos de software.</li>
+      <li>Apresentações orais de estudos de caso e conceitos tecnológicos.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary tabindex="0">Linguagem de Programação (C#)</summary>
+    <p>Aprofunde-se na parte mais visual da programação usando C#, criando aplicações robustas para desktop tanto com interfaces gráficas (Windows Forms) quanto em ambiente de console.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Sistema de cadastro de clientes com persistência de dados em arquivos, explorando classes, objetos e herança.</li>
+      <li>Aplicação de gestão de biblioteca com interface gráfica, demonstrando o uso de eventos e componentes visuais.</li>
+    </ul>
+    <center><a href="https://youtu.be/DA-DQsmPItU?si=O7i4FYlEUVbLbjDh" class="btn-link download-btn">Saiba mais</a></center>
+  </details>
+
+  <details>
+    <summary tabindex="0">Algoritmos e Lógica de Programação (Portugol)</summary>
+    <p>Estude os princípios da lógica computacional para resolver problemas através de algoritmos com ferramentas visuais simples.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Elaboração de algoritmos para cálculo de médias escolares, onde você aprenderá a estruturar o fluxo de dados e decisões para sistemas acadêmicos.</li>
+      <li>Programação de pequenos jogos simples, como adivinhação de números, que introduzem conceitos de interatividade e feedback ao usuário.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary tabindex="0">Programação em Microinformática (HTML e CSS)</summary>
+    <p>Aprenda a criar e estilizar páginas web usando HTML e CSS, base fundamental para o desenvolvimento front-end. Desenvolva interfaces intuitivas e visualmente atraentes para diversas plataformas.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Criação de um site pessoal para portfólio, utilizando semântica HTML e técnicas avançadas de estilização CSS para apresentar seus trabalhos.</li>
+      <li>Desenvolvimento de uma página responsiva para eventos, garantindo uma ótima experiência de usuário em dispositivos de diferentes tamanhos.</li>
+    </ul>
+    <center><a href="#" class="btn-link download-btn">Baixar Projeto</a></center>
+  </details>
+
+  <details>
+    <summary tabindex="0">Programação Orientada a Objetos (Java)</summary>
+    <p>Domine a programação orientada a objetos com Java, uma das mais versáteis e utilizadas no mercado, com foco em desenvolvimento de sistemas e aplicações empresariais.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Sistema de controle de estoque utilizando conceitos de classes e objetos, com funcionalidades de adição, remoção e busca de produtos.</li>
+      <li>Simulador de caixa eletrônico com operações bancárias básicas e tratamento de exceções.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary tabindex="0">Programação para Web (JavaScript)</summary>
+    <p>Aprenda a tornar suas páginas web dinâmicas e interativas com JavaScript, a linguagem essencial para o desenvolvimento front-end moderno.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Criação de um jogo da memória interativo, aplicando manipulação do DOM e eventos.</li>
+      <li>Desenvolvimento de um formulário de validação de dados em tempo real, melhorando a usabilidade e a qualidade das informações.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary tabindex="0">Banco de Dados (PHP + MySQL)</summary>
+    <p>Construa sistemas web completos, conectando o poder do PHP para lógica de negócio com a eficiência do MySQL para gerenciamento de dados.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Sistema de blog com CRUD (Criar, Ler, Atualizar, Deletar) de posts e comentários, utilizando banco de dados MySQL para persistência.</li>
+      <li>Plataforma de e-commerce simplificada, com funcionalidades de carrinho de compras e gestão de produtos.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary tabindex="0">Programação em Dispositivos Móveis</summary>
+    <p>Desenvolva aplicações nativas para a plataforma Android utilizando Android Studio, criando experiências móveis ricas e otimizadas.</p>
+    <p>Projetos:</p>
+    <ul class="projects">
+      <li>Aplicativo de lista de tarefas com armazenamento local e notificações.</li>
+      <li>Criação de um quiz interativo com diferentes níveis de dificuldade e pontuação.</li>
+    </ul>
+  </details>
+</section>
+
+<section aria-labelledby="grade-title" id="grade">
+  <h2 id="grade-title">Grade Curricular Resumida</h2>
+  <div class="accordion-section">
+    <details>
+      <summary tabindex="0">1º Semestre</summary>
+      <p>Introdução à programação e fundamentos da computação. As disciplinas abordam os pilares para iniciar sua jornada na área de TI, incluindo lógica, hardware e desenvolvimento web básico.</p>
+      <ul class="projects">
+        <li>Programação em Microinformática</li>
+        <li>Algoritmos e Lógica de Programação</li>
+        <li>Laboratório de Hardware</li>
+        <li>Arquitetura e Organização de Computadores</li>
+        <li>Administração Geral</li>
+        <li>Matemática Discreta</li>
+        <li>Inglês I</li>
+      </ul>
+    </details>
+    <details>
+      <summary tabindex="0">2º Semestre</summary>
+      <p>Primeiros projetos reais com engenharia de software e contabilidade aplicada. Este semestre foca na criação de sistemas e na compreensão do ambiente de negócios.</p>
+      <ul class="projects">
+        <li>Engenharia de Software I</li>
+        <li>Linguagem de Programação</li>
+        <li>Sistemas de Informação</li>
+        <li>Contabilidade</li>
+        <li>Cálculo</li>
+        <li>Comunicação e Expressão</li>
+        <li>Inglês II</li>
+      </ul>
+    </details>
+    <details>
+      <summary tabindex="0">3º Semestre</summary>
+      <p>Consolidação de lógica, experiência do usuário e sistemas operacionais. Você aprofundará seus conhecimentos em estruturas de dados e interação humano-computador.</p>
+      <ul class="projects">
+        <li>Engenharia de Software II</li>
+        <li>Interação Humano Computador</li>
+        <li>Estruturas de Dados</li>
+        <li>Sistemas Operacionais I</li>
+        <li>Economia e Finanças</li>
+        <li>Estatística Aplicada</li>
+        <li>Sociedade e Tecnologia</li>
+        <li>Inglês III</li>
+      </ul>
+    </details>
+    <details>
+      <summary tabindex="0">4º Semestre</summary>
+      <p>Banco de dados, orientação a objetos e metodologia científica. Prepare-se para desenvolver sistemas mais complexos e a fundamentar sua pesquisa acadêmica.</p>
+      <ul class="projects">
+        <li>Engenharia de Software III</li>
+        <li>Programação Orientada a Objetos</li>
+        <li>Banco de Dados</li>
+        <li>Sistemas Operacionais II</li>
+        <li>Eletiva I</li>
+        <li>Metodologia da Pesquisa Científico-tecnológica</li>
+        <li>Inglês IV</li>
+      </ul>
+    </details>
+    <details>
+      <summary tabindex="0">5º Semestre</summary>
+      <p>Projetos integrados, redes e segurança. Este semestre foca na aplicação prática de conhecimentos em projetos e na segurança da informação.</p>
+      <ul class="projects">
+        <li>Laboratório de Engenharia de Software</li>
+        <li>Segurança da Informação</li>
+        <li>Redes de Computadores</li>
+        <li>Escolha I (Laboratório de Banco de Dados ou Sistemas Distribuídos)</li>
+        <li>Eletiva II</li>
+        <li>Programação Linear e Aplicações</li>
+        <li>Inglês V</li>
+      </ul>
+    </details>
+    <details>
+      <summary tabindex="0">6º Semestre</summary>
+      <p>Gestão de TI, empreendedorismo e TCC. Conclua sua formação com foco em gestão de projetos, liderança e desenvolvimento de seu trabalho de graduação.</p>
+      <ul class="projects">
+        <li>Gestão de Projetos</li>
+        <li>Gestão e Governança de Tecnologia da Informação</li>
+        <li>Escolha II (Tópicos Especiais em Informática ou Laboratório de Redes)</li>
+        <li>Escolha III (Inteligência Artificial ou Auditoria de Sistemas)</li>
+        <li>Gestão de Equipes</li>
+        <li>Empreendedorismo</li>
+        <li>Ética e Responsabilidade Profissional</li>
+        <li>Inglês VI</li>
+      </ul>
+    </details>
+  </div>
+    <section aria-labelledby="grade-title" id="grade">
+    <h2 id="grade-title">Docentes</h2>
+    <table role="table" aria-describedby="grade-description">
+      <thead>
+        <tr>
+          <th scope="col">Nomes</th>
+          <th scope="col">Contatos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Alexandre Marcelino da Silva, Me</th>
+          <td>alexandre.silva102@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Célia Regina Nugoli Estevam, Dra</th>
+          <td>celia.estevam01@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Euclides Teixeira Neto, Me</th>
+          <td>euclides.teixeira01@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Gabriela Cristiane Mendes Rahal, Me</th>
+          <td>gabriela.rahal@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Luciana Passos Marcondes Scarsiotta, Dra</th>
+          <td>luciana.marcondes01@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Luciane Berti Ribeiro, Esp</td>
+          <td>luciane.ribeiro01@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Lucilena de Lima, Me</th>
+          <td>lucilena.lima@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Renata de Freitas Góis Comparoni, Dra</th>
+          <td>renata.comparoni3@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Ronnie Marcos Rillo, Me</th>
+          <td>ronnie.rillo@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Samuel Stábile, Me</th>
+          <td>samuel.stabile@fatec.sp.gov.br</td>
+        </tr>
+        <tr>
+          <th scope="row">Saulo Felício Fernandes Zambotti, Me</th>
+          <td>saulo.zambotti@fatec.sp.gov.br</td>
+        </tr>
+        </table>
+    </main>
+
+<footer id="contato" aria-label="Rodapé com contatos, redes sociais e localização">
+  <p><strong>Contato:</strong> <a href="tel:1836259917">(18) 3625-9917</a> | <a href="mailto:f177.comunicacao@fatec.sp.gov.br">f177.comunicacao@fatec.sp.gov.br</a></p>
+  <div class="social-links" aria-label="Redes sociais">
+    <a href="https://www.facebook.com/fatecaracatuba/" target="_blank" rel="noopener" aria-label="Facebook Fatec" tabindex="0" title="Facebook Fatec"><img src="facebook.png" alt="Facebook"></a>
+    <a href="https://www.instagram.com/fatec177/" target="_blank" rel="noopener" aria-label="Instagram Fatec" tabindex="0" title="Instagram Fatec"><img src="instagram.png" alt="Instagram"></a>
+    <a href="https://wa.me/551836259914" target="_blank" rel="noopener" aria-label="Whatsapp Fatec" tabindex="0" title="Whatsapp Fatec"><img src="whatsapp.png" alt="Whatsapp"></a>
+  </div>
+  <center><p class="address">
+    Fatec Araçatuba - Prof. Fernando Amaral de Almeida Prado<br />
+    Av. Prestes Maia, 1764 - Ipanema, Araçatuba - SP<br />
+    CEP 16075-051
+  </p></center>
+  <iframe src="https://www.google.com/maps?q=Fatec+Ara%C3%A7atuba&output=embed" width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <br>
+<section id="sobre" aria-labelledby="sobre-title">
+  <h2 id="sobre">Sobre Nós</h2>
+  <p>Gerida pelo Centro Paula Souza, a Fatec (Faculdade de Tecnologia) Araçatuba Professor Fernando de Amaral de Almeida Prado é uma instituição pública de ensino superior, mantida pelo Governo do Estado de São Paulo. A unidade local, assim com as demais 63 espalhadas pelo estado, atua na formação de tecnólogos, profissionais de nível superior que atuam no eixo tecnológico. A instituição iniciou suas atividades em 2008, com a graduação de Bicombustíveis, em 2011, passou a oferecer o curso superior de Análise e Desenvolvimento de Sistemas. No ano de 2015, foi implantada a graduação a distância de Gestão Empresarial.</p>
+</section>
+  <br>
+  <p>© 2025 Fatec. Todos os direitos reservados.</p>
+
+</footer>
+
+</body>
+<script>
+  function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+    // Quando o menu principal é fechado, fecha também os dropdowns
+    if (!navLinks.classList.contains('show')) {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+  }
+
+  function toggleDropdown(button) {
+    // Fecha outros dropdowns abertos (apenas para mobile)
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.dropdown.active').forEach(openDropdown => {
+            if (openDropdown !== button.closest('.dropdown')) {
+                openDropdown.classList.remove('active');
+            }
+        });
+    }
+    const dropdown = button.closest('.dropdown');
+    dropdown.classList.toggle('active');
+
+    // Atualiza o aria-expanded para acessibilidade
+    const isExpanded = dropdown.classList.contains('active');
+    button.setAttribute('aria-expanded', isExpanded);
+  }
+
+  // Fecha o menu de navegação e dropdowns ao redimensionar para desktop
+  window.addEventListener('resize', () => {
+    const navLinks = document.querySelector('.nav-links');
+    if (window.innerWidth > 768 && navLinks.classList.contains('show')) {
+      navLinks.classList.remove('show');
+      document.querySelectorAll('.dropdown').forEach(dropdown => {
+          dropdown.classList.remove('active');
+      });
+    }
+  });
+
+</script>
+</html>
