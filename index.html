@@ -27,12 +27,13 @@
 
   body {
     margin: 0;
-    font-family: var(--code-font); /* Fonte principal do corpo como código */
+    font-family: var(--code-font);
     background-color: var(--gray-light);
     color: var(--gray-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
+    overflow-x: hidden; /* Adicionado para evitar a barra de rolagem horizontal */
   }
 
   a {
@@ -46,7 +47,6 @@
     outline: none;
   }
 
-  /* Topo da página com logos */
   .top-header {
     background-color: var(--white);
     padding: 15px 0;
@@ -60,17 +60,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px; /* Mais espaçamento entre as imagens */
+    gap: 50px;
+    flex-wrap: wrap; /* Adicionado para permitir quebrar linha em telas pequenas */
   }
 
   #logos_titulo img {
     height: auto;
-    max-height: 60px; /* Logos um pouco menores */
+    max-height: 60px;
+    width: auto; /* Garante que a largura se ajuste automaticamente */
   }
 
-  /* Header principal (barra de navegação) */
   header {
-    background: var(--black); /* Barra de navegação preta */
+    background: var(--black);
     box-shadow: 0 4px 12px var(--shadow-color);
     position: sticky;
     top: 0;
@@ -85,18 +86,16 @@
   nav {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Alinha os itens à direita para remover o "Fatec" do logo */
+    justify-content: flex-end;
     height: 70px;
   }
 
-  /* Esconde o logo "Fatec" na navegação principal em telas maiores */
   nav .logo {
     display: none;
   }
 
-  /* Esconde o botão de menu sanduíche em telas maiores */
   .menu-toggle {
-    display: none; /* Oculta por padrão em desktop */
+    display: none;
   }
 
   nav ul {
@@ -119,33 +118,31 @@
     border-radius: 8px;
     display: block;
     white-space: nowrap;
-    color: var(--white); /* Cor dos botões na barra de navegação */
+    color: var(--white);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    font-family: var(--code-font); /* Fonte dos botões de navegação */
+    font-family: var(--code-font);
   }
 
   nav ul li a:hover,
   nav ul li a:focus,
   .dropbtn:hover,
   .dropbtn:focus {
-    background-color: var(--red); /* Fundo vermelho no hover/focus */
+    background-color: var(--red);
     color: var(--white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     outline: none;
   }
 
-  /* Dropdown Button */
   .dropbtn {
     background-color: transparent;
     border: none;
     cursor: pointer;
   }
 
-  /* Dropdown content (hidden by default) */
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--black); /* Fundo preto para o dropdown */
+    background-color: var(--black);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -153,9 +150,8 @@
     margin-top: 5px;
   }
 
-  /* Links inside the dropdown */
   .dropdown-content a {
-    color: var(--white); /* Texto branco para os links do dropdown */
+    color: var(--white);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -163,13 +159,11 @@
     border-radius: 8px;
   }
 
-  /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: var(--red); /* Fundo vermelho no hover do dropdown */
+    background-color: var(--red);
     color: var(--white);
   }
 
-  /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {
     display: block;
   }
@@ -197,7 +191,7 @@
     font-size: 3rem;
     margin-bottom: 1.2rem;
     text-shadow: 0 3px 10px rgba(0,0,0,0.5);
-    font-family: 'Segoe UI', sans-serif; /* Título principal com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
   }
 
   .hero p {
@@ -219,7 +213,7 @@
     user-select: none;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
     border: none;
-    font-family: 'Segoe UI', sans-serif; /* Botão com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
   }
 
   .btn:hover,
@@ -248,7 +242,7 @@
     font-size: 2.2rem;
     position: relative;
     padding-bottom: 10px;
-    font-family: 'Segoe UI', sans-serif; /* Títulos com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
   }
 
   h2::after {
@@ -274,7 +268,7 @@
     margin-top: 40px;
     margin-bottom: 18px;
     font-size: 1.5rem;
-    font-family: 'Segoe UI', sans-serif; /* Subtítulos com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
   }
 
   p {
@@ -313,7 +307,7 @@
       margin-top: 0;
       font-size: 1.6rem;
       color: var(--black);
-      font-family: 'Segoe UI', sans-serif; /* Títulos de item com Segoe UI */
+      font-family: 'Segoe UI', sans-serif;
   }
 
   .about-course-item ul {
@@ -358,7 +352,10 @@
     outline: none;
     user-select: none;
     padding-right: 30px;
-    font-family: 'Segoe UI', sans-serif; /* Summary com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
+    display: flex; /* Adicionado para flexbox */
+    align-items: center; /* Alinha o texto e o ícone verticalmente */
+    justify-content: space-between; /* Espaço entre o texto e o ícone */
   }
 
   summary::-webkit-details-marker {
@@ -367,11 +364,12 @@
 
   summary:after {
     content: "➕";
-    float: right;
+    /* float: right; Removido para usar flexbox */
     transition: transform 0.3s ease;
     font-weight: 700;
     color: var(--red);
     font-size: 1.2rem;
+    margin-left: 10px; /* Adicionado para dar espaço entre o texto e o ícone */
   }
 
   details[open] summary:after {
@@ -407,7 +405,7 @@
     font-weight: 700;
     padding: 16px 15px;
     text-align: left;
-    font-family: 'Segoe UI', sans-serif; /* Cabeçalho da tabela com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
   }
 
   tbody td, tbody th {
@@ -443,7 +441,7 @@
     box-shadow: 0 8px 15px rgba(217,48,37,0.4);
     margin-top: 15px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    font-family: 'Segoe UI', sans-serif; /* Botão de link com Segoe UI */
+    font-family: 'Segoe UI', sans-serif;
   }
 
   .btn-link:hover,
@@ -489,7 +487,6 @@
     line-height: 1.8;
   }
 
-  /* Responsive Improvements */
   @media (max-width: 992px) {
     .container {
       padding: 0 15px;
@@ -520,10 +517,11 @@
         grid-template-columns: 1fr;
     }
     #logos_titulo {
-        gap: 30px; /* Reduz o espaçamento entre as logos em telas menores */
+        gap: 30px;
+        justify-content: space-around; /* Ajustado para melhor distribuição */
     }
     #logos_titulo img {
-        max-height: 50px; /* Reduz o tamanho das logos em telas menores */
+        max-height: 50px;
     }
   }
 
@@ -532,11 +530,14 @@
       padding: 10px 0;
     }
     #logos_titulo {
-      flex-direction: column; /* Empilha as logos verticalmente em telas muito pequenas */
-      gap: 10px;
+        flex-direction: row; /* Mantido como linha para telas menores */
+        flex-wrap: wrap; /* Permite quebrar linha se não houver espaço */
+        gap: 15px; /* Reduzido o espaçamento */
+        justify-content: center; /* Centraliza os itens */
     }
     #logos_titulo img {
-        max-height: 40px; /* Reduz ainda mais o tamanho das logos */
+        max-height: 35px; /* Diminuído o tamanho das imagens */
+        width: auto;
     }
 
     nav {
@@ -546,23 +547,21 @@
       padding: 10px 0;
     }
 
-    /* Mostra o logo "Fatec" na navegação em telas menores */
     nav .logo {
       display: block;
-      order: 1; /* Garante que ele fique no início */
-      color: var(--white); /* Cor branca para o logo no menu mobile */
-      font-family: 'Segoe UI', sans-serif; /* Mantém a fonte Segoe UI para o logo */
-      font-size: 1.8rem; /* Volta o tamanho do logo no mobile */
+      order: 1;
+      color: var(--white);
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 1.8rem;
     }
 
-    /* Mostra o botão de menu sanduíche em telas menores */
     .menu-toggle {
       display: block;
       order: 2;
       font-size: 2rem;
       background: none;
       border: none;
-      color: var(--white); /* Cor branca para o ícone do menu sanduíche */
+      color: var(--white);
       cursor: pointer;
     }
 
@@ -571,7 +570,7 @@
       flex-direction: column;
       width: 100%;
       margin-top: 15px;
-      background: var(--black); /* Fundo preto para o menu mobile */
+      background: var(--black);
       border-radius: 8px;
       box-shadow: 0 6px 18px var(--shadow-color);
       order: 3;
@@ -584,7 +583,7 @@
     .nav-links li {
       width: 100%;
       text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.1); /* Borda mais suave */
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .nav-links li:last-child {
@@ -597,7 +596,7 @@
       width: 100%;
       padding: 15px 20px;
       font-size: 1.1rem;
-      color: var(--white); /* Texto branco no menu mobile */
+      color: var(--white);
     }
 
     .dropdown-content {
@@ -606,17 +605,17 @@
       margin-top: 0;
       border-top: 1px solid rgba(255,255,255,0.1);
       border-radius: 0;
-      background-color: var(--black); /* Fundo preto para o dropdown mobile */
+      background-color: var(--black);
     }
 
     .dropdown-content a {
         padding-left: 35px;
         font-size: 1rem;
-        color: var(--white); /* Texto branco para links do dropdown mobile */
+        color: var(--white);
     }
 
     .dropdown-content a:hover {
-        background-color: var(--red-hover); /* Hover vermelho para links do dropdown mobile */
+        background-color: var(--red-hover);
     }
 
     .dropdown.active .dropdown-content {
@@ -643,12 +642,95 @@
     h2 {
       font-size: 1.8rem;
     }
-    table {
-      font-size: 0.9rem;
-      max-width: 100%;
+
+    /* Responsividade para a tabela de docentes */
+    table, thead, tbody, th, td, tr {
+      display: block; /* Transforma elementos da tabela em blocos */
     }
-    thead th, tbody td, tbody th {
-      padding: 10px;
+
+    thead tr {
+      position: absolute;
+      top: -9999px; /* Esconde o cabeçalho original */
+      left: -9999px;
+    }
+
+    tr {
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%; /* Espaço para o label */
+      text-align: right;
+    }
+
+    td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+      content: attr(data-label); /* Usa o atributo data-label para o conteúdo */
+    }
+    
+    /* Estilo específico para th dentro de tbody para mobile */
+    tbody th {
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        font-weight: normal; /* Para não ficar muito destacado */
+    }
+
+    tbody th:before {
+        content: "Nome:"; /* Conteúdo fixo para nomes no mobile */
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    td:last-child {
+        border-bottom: none;
+    }
+
+    /* Ajuste para o email para evitar quebra de linha excessiva */
+    td a {
+        word-break: break-all;
+    }
+
+    /* Para a visualização de desktop, voltamos ao normal */
+    @media (min-width: 769px) {
+        table, thead, tbody, th, td, tr {
+            display: table;
+        }
+        thead tr {
+            position: static;
+        }
+        td {
+            padding-left: 15px; /* Valor original */
+            text-align: left;
+        }
+        td:before, tbody th:before {
+            content: none; /* Remove o label */
+        }
+        tbody th {
+            padding-left: 15px;
+            text-align: left;
+            font-weight: 700; /* Volta ao normal */
+        }
     }
   }
 </style>
@@ -657,7 +739,7 @@
 <div class="top-header">
   <div id="logos_titulo">
     <div class="flex_center">
-      <a href="http://www.cps.sp.gov.br/" target="_blank" rel="noopener">
+      <a href="http://www.cps.sp.gov.br/" rel="noopener">
         <img src="cps.png" alt="Centro Paula Souza">
       </a>
     </div>
@@ -667,7 +749,7 @@
       </a>
     </div>
     <div>
-      <a href="https://www.saopaulo.sp.gov.br/" target="_blank" rel="noopener">
+      <a href="https://www.saopaulo.sp.gov.br/" rel="noopener">
         <img class="logo-gov-sp" src="govsp.jpg" alt="Governo do Estado de São Paulo">
       </a>
     </div>
@@ -786,6 +868,7 @@
       <li>Elaboração de relatórios técnicos e documentação de projetos de software.</li>
       <li>Apresentações orais de estudos de caso e conceitos tecnológicos.</li>
     </ul>
+    <center><a href="https://www.passeidireto.com/disciplina/comunicacao-e-expressao" class="btn-link download-btn">Saiba mais</a></center>
   </details>
 
   <details>
@@ -807,6 +890,7 @@
       <li>Elaboração de algoritmos para cálculo de médias escolares, onde você aprenderá a estruturar o fluxo de dados e decisões para sistemas acadêmicos.</li>
       <li>Programação de pequenos jogos simples, como adivinhação de números, que introduzem conceitos de interatividade e feedback ao usuário.</li>
     </ul>
+    <center><a href="https://www.youtube.com/watch?v=CLiNnS92rCg&list=PLHVpcBDJr5dnK52SZvuA-cAA3DnqRJ6nz" class="btn-link download-btn">Saiba mais</a></center>
   </details>
 
   <details>
@@ -817,47 +901,7 @@
       <li>Criação de um site pessoal para portfólio, utilizando semântica HTML e técnicas avançadas de estilização CSS para apresentar seus trabalhos.</li>
       <li>Desenvolvimento de uma página responsiva para eventos, garantindo uma ótima experiência de usuário em dispositivos de diferentes tamanhos.</li>
     </ul>
-    <center><a href="#" class="btn-link download-btn">Baixar Projeto</a></center>
-  </details>
-
-  <details>
-    <summary tabindex="0">Programação Orientada a Objetos (Java)</summary>
-    <p>Domine a programação orientada a objetos com Java, uma das mais versáteis e utilizadas no mercado, com foco em desenvolvimento de sistemas e aplicações empresariais.</p>
-    <p>Projetos:</p>
-    <ul class="projects">
-      <li>Sistema de controle de estoque utilizando conceitos de classes e objetos, com funcionalidades de adição, remoção e busca de produtos.</li>
-      <li>Simulador de caixa eletrônico com operações bancárias básicas e tratamento de exceções.</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary tabindex="0">Programação para Web (JavaScript)</summary>
-    <p>Aprenda a tornar suas páginas web dinâmicas e interativas com JavaScript, a linguagem essencial para o desenvolvimento front-end moderno.</p>
-    <p>Projetos:</p>
-    <ul class="projects">
-      <li>Criação de um jogo da memória interativo, aplicando manipulação do DOM e eventos.</li>
-      <li>Desenvolvimento de um formulário de validação de dados em tempo real, melhorando a usabilidade e a qualidade das informações.</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary tabindex="0">Banco de Dados (PHP + MySQL)</summary>
-    <p>Construa sistemas web completos, conectando o poder do PHP para lógica de negócio com a eficiência do MySQL para gerenciamento de dados.</p>
-    <p>Projetos:</p>
-    <ul class="projects">
-      <li>Sistema de blog com CRUD (Criar, Ler, Atualizar, Deletar) de posts e comentários, utilizando banco de dados MySQL para persistência.</li>
-      <li>Plataforma de e-commerce simplificada, com funcionalidades de carrinho de compras e gestão de produtos.</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary tabindex="0">Programação em Dispositivos Móveis</summary>
-    <p>Desenvolva aplicações nativas para a plataforma Android utilizando Android Studio, criando experiências móveis ricas e otimizadas.</p>
-    <p>Projetos:</p>
-    <ul class="projects">
-      <li>Aplicativo de lista de tarefas com armazenamento local e notificações.</li>
-      <li>Criação de um quiz interativo com diferentes níveis de dificuldade e pontuação.</li>
-    </ul>
+    <center><a href="https://www.youtube.com/watch?v=Ejkb_YpuHWs&list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n" class="btn-link download-btn">Saiba mais</a></center>
   </details>
 </section>
 
@@ -957,47 +1001,47 @@
       <tbody>
         <tr>
           <th scope="row">Alexandre Marcelino da Silva, Me</th>
-          <td>alexandre.silva102@fatec.sp.gov.br</td>
+          <td data-label="Contatos">alexandre.silva102@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Célia Regina Nugoli Estevam, Dra</th>
-          <td>celia.estevam01@fatec.sp.gov.br</td>
+          <td data-label="Contatos">celia.estevam01@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Euclides Teixeira Neto, Me</th>
-          <td>euclides.teixeira01@fatec.sp.gov.br</td>
+          <td data-label="Contatos">euclides.teixeira01@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Gabriela Cristiane Mendes Rahal, Me</th>
-          <td>gabriela.rahal@fatec.sp.gov.br</td>
+          <td data-label="Contatos">gabriela.rahal@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Luciana Passos Marcondes Scarsiotta, Dra</th>
-          <td>luciana.marcondes01@fatec.sp.gov.br</td>
+          <td data-label="Contatos">luciana.marcondes01@fatec.sp.gov.br</td>
         </tr>
         <tr>
-          <th scope="row">Luciane Berti Ribeiro, Esp</td>
-          <td>luciane.ribeiro01@fatec.sp.gov.br</td>
+          <th scope="row">Luciane Berti Ribeiro, Esp</th>
+          <td data-label="Contatos">luciane.ribeiro01@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Lucilena de Lima, Me</th>
-          <td>lucilena.lima@fatec.sp.gov.br</td>
+          <td data-label="Contatos">lucilena.lima@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Renata de Freitas Góis Comparoni, Dra</th>
-          <td>renata.comparoni3@fatec.sp.gov.br</td>
+          <td data-label="Contatos">renata.comparoni3@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Ronnie Marcos Rillo, Me</th>
-          <td>ronnie.rillo@fatec.sp.gov.br</td>
+          <td data-label="Contatos">ronnie.rillo@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Samuel Stábile, Me</th>
-          <td>samuel.stabile@fatec.sp.gov.br</td>
+          <td data-label="Contatos">samuel.stabile@fatec.sp.gov.br</td>
         </tr>
         <tr>
           <th scope="row">Saulo Felício Fernandes Zambotti, Me</th>
-          <td>saulo.zambotti@fatec.sp.gov.br</td>
+          <td data-label="Contatos">saulo.zambotti@fatec.sp.gov.br</td>
         </tr>
         </table>
     </main>
