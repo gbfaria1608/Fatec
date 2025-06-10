@@ -659,44 +659,30 @@
       overflow: hidden;
     }
 
-    td {
-      border: none;
-      border-bottom: 1px solid #eee;
+    /* Updated styles for mobile table display */
+    tbody td, tbody th {
+      padding: 10px 15px; /* Reduced padding for better fit */
+      text-align: left; /* Align text to the left */
       position: relative;
-      padding-left: 50%;
-      text-align: right;
-    }
-
-    td:before {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
-      text-align: left;
-      font-weight: bold;
-      content: attr(data-label);
-    }
-    
-    tbody th {
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        text-align: right;
-        font-weight: normal;
+      padding-left: 100px; /* Space for the label */
     }
 
     tbody th:before {
-        content: "Nome:";
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
+        content: "Nome:"; /* Explicit label for name */
         font-weight: bold;
+        position: absolute;
+        left: 15px;
+        width: 75px; /* Fixed width for the label */
+        text-align: left;
+    }
+
+    tbody td:before {
+        content: attr(data-label); /* Use data-label for other cells */
+        font-weight: bold;
+        position: absolute;
+        left: 15px;
+        width: 75px; /* Fixed width for the label */
+        text-align: left;
     }
     
     td:last-child {
